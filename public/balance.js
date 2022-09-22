@@ -32,19 +32,6 @@ function BalanceForm(props){
   const ctx = React.useContext(UserContext);  
 
   function handle(){
-    const user = ctx.users.find((user) => user.email == email);
-    if (!user) {
-      props.setStatus('fail!')      
-      return;      
-    }
-
-    setBalance(user.balance);
-    console.log(user);
-    props.setStatus('Your balance is: ' + user.balance);      
-    props.setShow(false);
-  }
-
-  function handle(){
     console.log(email);
     const url =
     `/account/balance/${email}`;
@@ -58,8 +45,8 @@ function BalanceForm(props){
       }
       data = JSON.parse(data);
       console.log(data);
-      console.log(data.value.balance);
-      props.setStatus(`Your balance is ${data.value.balance}`);
+      console.log(data.balance);
+      props.setStatus(`Your balance is ${data.balance}`);
       props.setShow(false);
       return;      
     })();
