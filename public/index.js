@@ -1,3 +1,5 @@
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 function Spa() {
   return (
     <HashRouter>
@@ -20,7 +22,6 @@ function Spa() {
   );
 }
 
-ReactDOM.render(
-  <Spa/>,
-  document.getElementById('root')
+root.render(
+  <Spa/>
 );
