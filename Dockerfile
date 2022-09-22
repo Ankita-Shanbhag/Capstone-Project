@@ -13,5 +13,4 @@ COPY . .
 
 #Expose port and start application
 EXPOSE 3001
-EXPOSE 27017
 CMD ["node", "index.js"]
