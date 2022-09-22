@@ -44,6 +44,28 @@ function BalanceForm(props){
     props.setShow(false);
   }
 
+  function handle(){
+    console.log(email);
+    const url =
+    `/account/balance/${email}`;
+    (async () => {
+      var res = await fetch(url);
+      var data = await res.text()
+      if (!data) {
+        console.log('User does not exist')      
+        props.setStatus('Error: User does not exist!')      
+        return;      
+      }
+      data = JSON.parse(data);
+      console.log(data);
+      console.log(data.value.balance);
+      props.setStatus(`Your balance is ${data.value.balance}`);
+      props.setShow(false);
+      return;      
+    })();
+    props.setShow(false);      
+  }
+
   return (<>
 
     Email<br/>

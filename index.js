@@ -100,6 +100,16 @@ app.get('/account/withdraw/:email/:amount', function (req, res) {
         });
 });
 
+//get balance
+app.get('/account/balance/:email/', function (req, res) {
+    dal.findOne(req.params.email).
+        then((user) => {
+            console.log(user);
+            res.send(user);
+        });
+});
+
+
 var port = 3000;
 app.listen(port);
 console.log('Running on port: ' + port);
