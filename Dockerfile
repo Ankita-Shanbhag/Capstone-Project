@@ -1,5 +1,7 @@
 FROM --platform=linux/amd64 node:slim 
 
+LABEL author="Ankita Suresh Shanbhag"
+
 # Step 1 - Add container working directory
 WORKDIR /app
 # Step 2 - Copy npm dependencies
@@ -11,4 +13,5 @@ COPY . .
 
 #Expose port and start application
 EXPOSE 3001
+EXPOSE 27017
 CMD ["node", "index.js"]

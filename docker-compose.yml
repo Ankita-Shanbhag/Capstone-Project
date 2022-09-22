@@ -1,33 +1,33 @@
 version: "3.8"
 services:
-  mongodb:
+  mongo:
     image: mongo:5.0.2
     restart: unless-stopped
     environment:
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=$MONGO_HOSTNAME
-      - MONGO_PORT=$MONGO_LOCAL_PORT
-      - MONGO_DB=$MONGO_DB
+      - MONGO_USERNAME=doadmin
+      - MONGO_PASSWORD=DL87gV3945rOK10k
+      - MONGO_HOSTNAME=mongodb+srv://db-mongodb-sfo3-78703-0be25791.mongo.ondigitalocean.com
+      - MONGO_PORT=27017
+      - MONGO_DB=admin
     ports:
-      - $MONGO_LOCAL_PORT:$MONGO_DOCKER_PORT
+      - 27017:27017
     volumes:
       - db:/data/db
   app:
     depends_on:
-      - mongodb
+      - mongo
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - 3001:3001
     environment:
       - DB_HOST=mongodb
-      - DB_NAME=badbank-db
-      - DB_PORT=27107
-      - DB_HOSTNAME=localhost
+      - DB_NAME=admin
+      - DB_PORT=27017
+      - DB_HOSTNAME=localhostdoc
     stdin_open: true
     tty: true
 volumes:

@@ -7,7 +7,7 @@ const {
     MONGO_LOCAL_PORT,
     MONGO_DB
   } = process.env;
-const url = `mongodb://${MONGO_HOSTNAME}:${MONGO_LOCAL_PORT}`;
+const url = `mongodb://mongo:${MONGO_LOCAL_PORT}`;
 console.log(url);
 const options = {
     useNewUrlParser: true,
