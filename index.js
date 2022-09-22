@@ -17,39 +17,39 @@ const {
 app.use(express.static('public'));
 app.use(cors());
 
-var options = {
-    method: 'PATCH',
-    url: 'https://capstoneproject-app.us.auth0.com/api/v2/clients/oZXqFupwrzJAacuXyQwOT3joRQQ9FQGi',
-    headers: {
-        'content-type': 'application/json',
-        authorization: 'Bearer API2_ACCESS_TOKEN',
-        'cache-control': 'no-cache'
-    },
-    data: {initiate_login_uri: 'localhost:27017'}
-};
+// var options = {
+//     method: 'PATCH',
+//     url: 'https://capstoneproject-app.us.auth0.com/api/v2/clients/oZXqFupwrzJAacuXyQwOT3joRQQ9FQGi',
+//     headers: {
+//         'content-type': 'application/json',
+//         authorization: 'Bearer API2_ACCESS_TOKEN',
+//         'cache-control': 'no-cache'
+//     },
+//     data: {initiate_login_uri: 'localhost:27017'}
+// };
 
-axios.request(options).then(function (response) {
-    console.log(response.data);
-    }).catch(function (error) {
-    console.error(error);
-});
+// axios.request(options).then(function (response) {
+//     console.log(response.data);
+//     }).catch(function (error) {
+//     console.error(error);
+// });
 
-const config = {
-    authRequired: false,
-    auth0Logout: true,
-    secret: `${SECRET}`,
-    baseURL: `${MONGO_HOSTNAME}:3000`,
-    clientID: 'oZXqFupwrzJAacuXyQwOT3joRQQ9FQGi',
-    issuerBaseURL: 'https://capstoneproject-app.us.auth0.com'
-};
+// const config = {
+//     authRequired: false,
+//     auth0Logout: true,
+//     secret: `${SECRET}`,
+//     baseURL: `${MONGO_HOSTNAME}:3000`,
+//     clientID: 'oZXqFupwrzJAacuXyQwOT3joRQQ9FQGi',
+//     issuerBaseURL: 'https://capstoneproject-app.us.auth0.com'
+// };
   
-// auth router attaches /login, /logout, and /callback routnode es to the baseURL
-app.use(auth(config));
+// // auth router attaches /login, /logout, and /callback routnode es to the baseURL
+// app.use(auth(config));
 
-// req.isAuthenticated is provided from the auth router
-app.get('/', (req, res) => {
-res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-});
+// // req.isAuthenticated is provided from the auth router
+// app.get('/', (req, res) => {
+// res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+// });
 
 // app.get('/profile', auth(), (req, res) => {
 // res.send(JSON.stringify(req.oidc.user));
